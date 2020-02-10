@@ -1,0 +1,45 @@
+package com.tyss.hibernatepractice.manytomany;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+
+@Entity
+@Table(name="project_Info")
+public class ProjectInfo {
+	@Id
+	@Column
+	private int Project_id;
+	
+	@Column
+	private String Project_name;
+	
+	@Column
+	private String technology;
+	
+	@Column
+	private String location;
+	
+	@Column
+	private String start_date;
+	
+	@Column
+	private String end_date;
+	
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "EmpPrimaryInfo",joinColumns = @JoinColumn(name="Project_id"),inverseJoinColumns = @JoinColumn(name=""))
+	private List<EmpPrimaryInfo> primaryInfo;
+	
+
+}

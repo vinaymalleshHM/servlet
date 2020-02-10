@@ -1,0 +1,14 @@
+package com.tyss.junit;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class SimpleCalTest {
+
+	void getDivResult(int a,int b,int c) {
+		SimpleCal cal = new SimpleCal();
+		int result =  cal.div(a, b);
+		assertEquals(c, result);
+	}
+}

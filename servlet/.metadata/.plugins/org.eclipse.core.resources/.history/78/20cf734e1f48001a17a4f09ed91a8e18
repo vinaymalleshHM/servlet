@@ -1,0 +1,74 @@
+package com.tyess.productrestapi.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Repository;
+
+import com.tyess.productrestapi.dto.ProductInfoBean;
+
+@Repository
+public class ProductDAOImpl implements ProductDAO{
+	
+	@PersistenceUnit
+	private EntityManagerFactory factory ;
+	
+//	@Autowired
+//	private BCryptPasswordEncoder encoder ;
+
+	@Override
+	public boolean addProduct(ProductInfoBean bean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		try {
+			manager.persist(bean);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			for (StackTraceElement element : e.getStackTrace()) {
+				System.out.println(element.toString());
+			}
+			return false;
+		}
+	}
+
+	@Override
+	public boolean removeProduct(int id) {
+
+		EntityManager manager = factory.createEntityManager();	
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		ProductInfoBean bean = manager.find(ProductInfoBean.class, id);
+		manager.remove(bean);
+		transaction.commit();
+		return true;
+	}
+
+	@Override
+	public void updateProduct(ProductInfoBean bean) {
+		
+		EntityManager manager = factory.createEntityManager();	
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+//		ProductInfoBean bean = manager.find(ProductInfoBean.class, id);
+	}
+
+	@Override
+	public void getProductByName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getAllProduct() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

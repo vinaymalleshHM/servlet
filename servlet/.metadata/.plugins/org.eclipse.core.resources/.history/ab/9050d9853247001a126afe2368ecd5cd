@@ -1,0 +1,37 @@
+package com.tyss.empspringmvc.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.tyss.empspringmvc.dao.EmployeeDAO;
+import com.tyss.empspringmvc.dto.EmployeeInfoBean;
+
+public class EmployeeServiceImpl implements EmployeeService{
+	@Autowired
+	private EmployeeDAO dao;
+	@Override
+	public EmployeeInfoBean auth(String email, String password) {
+		// TODO Auto-generated method stub
+		return dao.auth(email, password);
+	}
+
+	@Override
+	public boolean register(EmployeeInfoBean bean) {
+		// TODO Auto-generated method stub
+		return dao.register(bean);
+	}
+
+	@Override
+	public void changePassword(int id, String password) {
+		// TODO Auto-generated method stub
+		dao.changePassword(id, password);
+	}
+
+	@Override
+	public List<EmployeeInfoBean> search(String name) {
+		// TODO Auto-generated method stub
+		return dao.search(name);
+	}
+
+}

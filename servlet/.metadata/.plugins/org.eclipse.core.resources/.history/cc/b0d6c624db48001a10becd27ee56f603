@@ -1,0 +1,5 @@
+package com.tyss.productspringboot.dto;
+
+public class ProductResponse {
+  
+}

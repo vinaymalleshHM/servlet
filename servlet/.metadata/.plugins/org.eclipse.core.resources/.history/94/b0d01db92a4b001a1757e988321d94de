@@ -1,0 +1,10 @@
+package com.tyss.hibernatepractice.manytoone;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Emp_Address_Info")
+public class EmpAddressInfo {
+
+}

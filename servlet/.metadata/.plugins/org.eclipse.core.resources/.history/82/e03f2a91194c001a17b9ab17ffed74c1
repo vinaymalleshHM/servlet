@@ -1,0 +1,19 @@
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+import com.tyss.hibernatepractice.manytomany.ProjectInfo;
+
+public class ManyToMantTableInsert {
+	
+	EntityManagerFactory factory = null;
+	EntityManager manager = null;
+	EntityTransaction transaction = null;
+	EmpPrimaryInfo empPrimaryInfo = new EmpPrimaryInfo();
+	ProjectInfo projectInfo = new ProjectInfo();
+	
+	
+	
+
+}

@@ -1,0 +1,26 @@
+package com.tyss.productspringboot.controller;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tyss.productspringboot.dto.ProductInfoBean;
+import com.tyss.productspringboot.service.ProductService;
+
+@RestController
+public class ProductRestController {
+	
+	private ProductService service;
+	
+	
+	public boolean addProduct(@RequestBody()ProductInfoBean bean) {
+		if (service.addProduct(bean)) {
+			
+		}else {
+			
+		}
+		return false;
+		
+	}
+
+	
+}

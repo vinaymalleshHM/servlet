@@ -1,0 +1,5 @@
+package com.tyss.hibernatepractice.onetoone;
+
+public class EmpSecondaryInfo {
+
+}

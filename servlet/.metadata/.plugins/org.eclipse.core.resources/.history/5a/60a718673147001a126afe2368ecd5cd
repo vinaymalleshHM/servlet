@@ -1,0 +1,5 @@
+package com.tyss.empspringmvc.service;
+//service layer is used to write a BL apart from DB operation
+public interface EmployeeService {
+
+}

@@ -1,0 +1,40 @@
+package com.tyss.hibernatepractice.onetoone;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="emp_secondary_info")
+public class EmpSecondaryInfo implements Serializable {
+	@Id
+	@Column
+	private int emp_id;
+	@Column
+	private String gender;
+	@Column
+	private String personal_email;
+	@Column
+	private String job_location;
+	@Column
+	private boolean is_married;
+	@Column
+	private String nationality;
+	@Column
+	private int  guardian_number;
+	@Column
+	private String guardian_name;
+	@Column
+	private String govt_id;
+	@Column
+	private String blood_group;
+	@Column
+	private int emargancy_no;
+	@Column
+	private boolean is_phycally_challenged;
+
+
+}

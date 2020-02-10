@@ -1,0 +1,74 @@
+import java.util.ArrayList;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+import com.tyss.hibernatepractice.manytomany.ProjectInfo;
+
+public class ManyToManyTableInsert {
+	
+	public static void main(String[] args) {
+		
+		EntityManagerFactory factory = null;
+		EntityManager manager = null;
+		EntityTransaction transaction = null;
+		EmpPrimaryInfo empPrimaryInfo = new EmpPrimaryInfo();
+		ProjectInfo projectInfo = new ProjectInfo();
+		ArrayList<EmpPrimaryInfo> al = new ArrayList<EmpPrimaryInfo>();
+		
+		
+		empPrimaryInfo.setEmp_id(10);
+		empPrimaryInfo.setEmp_name("prince2");
+		empPrimaryInfo.setDepartment_id(18);
+		empPrimaryInfo.setDesignation("software");
+		empPrimaryInfo.setDob("1997-02-02");
+		empPrimaryInfo.setJoining_date("1998-02-06");
+		empPrimaryInfo.setExperience(2.5);
+		empPrimaryInfo.setManager_id(19);
+		empPrimaryInfo.setOfficial_mail("prince2testyantra@gmail.com");
+		empPrimaryInfo.setPhone_number(55555);
+		empPrimaryInfo.setSalary(2.3);
+
+//		al.add(empPrimaryInfo);
+		
+//		projectInfo.setPrimaryInfo(al);
+		
+		projectInfo.setProject_id(2);
+		projectInfo.setProject_name("java proj");
+		projectInfo.setTechnology("java");
+		projectInfo.setLocation("banglore");
+		projectInfo.setStart_date("2018-10-3");
+		projectInfo.setEnd_date("2019-08-08");
+		
+		
+		projectInfo.setProject_id(3);
+		projectInfo.setProject_name("java proj");
+		projectInfo.setTechnology("java");
+		projectInfo.setLocation("banglore");
+		projectInfo.setStart_date("2018-10-3");
+		projectInfo.setEnd_date("2019-08-08");
+		
+		
+		try {
+			factory = Persistence.createEntityManagerFactory("test");
+			manager = factory.createEntityManager();
+			transaction = manager.getTransaction(); 
+			transaction.begin();
+			manager.persist(projectInfo);
+			transaction.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback(); 
+		}
+		
+		finally {
+			factory.close();
+			manager.close();
+		}
+	} 
+	
+}

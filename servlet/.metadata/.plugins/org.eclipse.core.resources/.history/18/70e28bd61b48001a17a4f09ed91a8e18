@@ -1,0 +1,15 @@
+package com.tyess.productrestapi.dto;
+
+import javax.persistence.Entity;
+
+@Entity
+public class ProductInfoBean {
+	private int id;
+	private String name;
+	private double price;
+	private int quantity;
+	private String description;
+	private String imageURL;
+	
+
+}

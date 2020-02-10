@@ -1,0 +1,5 @@
+package com.tyss.junit;public class BMICalculator{
+public double calBMI(double wieght,int hieght) {
+		return wieght/hieght;
+	}
+}

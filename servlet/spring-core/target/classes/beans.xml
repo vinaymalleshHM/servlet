@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="hello" class="com.tyss.springcore.beans.Hello"
+		init-method="init" destroy-method="destroy">  <!-- scope="prototype" used to give one of the object -->
+		<!-- <property name="message" value="I Love Java"></property> -->
+		<constructor-arg name="message"
+			value="I Love Developing"></constructor-arg>
+		<property name="map">
+			<map>
+				<entry key="1" value="one"></entry>
+				<entry key="2" value="two"></entry>
+				<entry key="3" value="three"></entry>
+				<entry key="4" value="four"></entry>
+			</map>
+		</property>
+		<property name="list">
+			<list>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+				<value>5</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- <bean id="dog" class="com.tyss.springcore.beans.Dog"> here we changing 
+		id name below one -->
+	<bean id="animal" class="com.tyss.springcore.beans.Dog">
+	</bean>
+	<bean id="cat" class="com.tyss.springcore.beans.Cat"
+		primary="true">
+	</bean>
+	<bean id="beanPostProcesser"
+		class="com.tyss.springcore.beans.BeanPostProcesserImpl">
+	</bean>
+	<bean id="beanFactoryPostProcesser"
+		class="com.tyss.springcore.beans.BeanFactoryPostProcesserImpl">
+	</bean>
+	<bean id="pet" class="com.tyss.springcore.beans.Pet"
+		autowire="byName">
+		<!-- autowire="byName" this is use to searh and get the id in pet class 
+			we have animal variable based on that it will come here and serach -->
+		<!-- autowire="byType" set the value using setter method its for property -->
+		<!-- autowire=" set the value using constructor its for constructor -->
+		<property name="name" value="chiya"></property>
+		<!-- <property name="animal" ref="cat"></property> -->   <!-- here we can pass object that mean we can pass id of bean -->
+		<!-- <constructor-arg name="name" value="chini"></constructor-arg> -->
+		<!-- <constructor-arg name="animal" ref="dog"></constructor-arg> -->
+	</bean>
+</beans>

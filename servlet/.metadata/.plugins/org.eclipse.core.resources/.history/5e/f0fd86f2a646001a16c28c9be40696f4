@@ -1,0 +1,37 @@
+package com.tyss.hibernatepractice.jpql;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+
+
+public class DynamicRecordUpdate {
+	public static void main(String[] args) {
+		EntityManagerFactory factory = null;
+		EntityManager manager = null;
+		EntityTransaction transaction = null;
+		
+		
+		try {
+			factory = Persistence.createEntityManagerFactory("test");
+			manager = factory.createEntityManager();
+			transaction = manager.getTransaction();
+			
+			String  jpql = "update EmpPrimaryInfo emp set emp.manager_id where emp.emp_id=:id";
+			Query query = manager.createQuery(jpql);
+			query.setParameter("id", 6);
+			List<EmpPrimaryInfo> recoEmpPrimaryInfo = query.getResultList();
+			manager.find(EmpPrimaryInfo.class, 6);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}

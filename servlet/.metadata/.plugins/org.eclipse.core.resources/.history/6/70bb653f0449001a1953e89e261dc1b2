@@ -1,0 +1,116 @@
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import org.jboss.jandex.Main;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+import com.tyss.hibernatepractice.onetoone.EmpSecondaryInfo;
+
+public class OneToOneTableInsert {
+	public static void main(String[] args) {
+		System.out.println(5/0);
+		EntityManagerFactory factory = null;
+		EntityManager manager = null;
+		EntityTransaction transaction = null;
+		EmpPrimaryInfo empPrimaryInfo = new EmpPrimaryInfo();
+		EmpSecondaryInfo empSecondaryInfo = new EmpSecondaryInfo();
+
+		//1. EmpPrimaryInfo via persist by EmpSecondaryInfo 
+
+//				empPrimaryInfo.setEmp_id(7);
+//				empPrimaryInfo.setEmp_name("venki test yantra");
+//				empPrimaryInfo.setDepartment_id(12);
+//				empPrimaryInfo.setDesignation("software");
+//				empPrimaryInfo.setDob("1997-02-02");
+//				empPrimaryInfo.setJoining_date("1998-02-06");
+//				empPrimaryInfo.setExperience(2.5);
+//				empPrimaryInfo.setManager_id(20);
+//				empPrimaryInfo.setOfficial_mail("venki@gmail.com");
+//				empPrimaryInfo.setPhone_number(55555);
+//				empPrimaryInfo.setSalary(2.3);
+//				
+//				empSecondaryInfo.setPrimary(empPrimaryInfo);
+//				empSecondaryInfo.setBlood_group("A+");
+//				empSecondaryInfo.setGender("male");
+//				empSecondaryInfo.setEmargancy_no(252222);
+//				empSecondaryInfo.setGovt_id("BV346");
+//				empSecondaryInfo.setGuardian_name("Somthing");
+//				empSecondaryInfo.setGuardian_number(5555);;
+//				empSecondaryInfo.setIs_married(true);
+//				empSecondaryInfo.setIs_phycally_challenged(false);
+//				empSecondaryInfo.setJob_location("banglore");
+//				empSecondaryInfo.setNationality("india");
+//				empSecondaryInfo.setPersonal_email("avcd@gsdh.com");
+//				empSecondaryInfo.setIs_married(true);
+//				empSecondaryInfo.setIs_phycally_challenged(false);
+				
+
+
+
+//		empPrimaryInfo.setEmp_id(9);
+//		empPrimaryInfo.setEmp_name("test");
+//		empPrimaryInfo.setDepartment_id(19);
+//		empPrimaryInfo.setDesignation("software");
+//		empPrimaryInfo.setDob("1997-02-02");
+//		empPrimaryInfo.setJoining_date("1998-02-06");
+//		empPrimaryInfo.setExperience(2.5);
+//		empPrimaryInfo.setManager_id(20);
+//		empPrimaryInfo.setOfficial_mail("test@gmail.com");
+//		empPrimaryInfo.setPhone_number(55555);
+//		empPrimaryInfo.setSalary(2.3);
+//
+//		empSecondaryInfo.setEmp_id(9);
+//		empSecondaryInfo.setBlood_group("A+");
+//		empSecondaryInfo.setGender("female");
+//		empSecondaryInfo.setEmargancy_no(252222);
+//		empSecondaryInfo.setGovt_id("BV346");
+//		empSecondaryInfo.setGuardian_name("Somthing");
+//		empSecondaryInfo.setGuardian_number(5555);;
+//		empSecondaryInfo.setIs_married(false);
+//		empSecondaryInfo.setIs_phycally_challenged(false);
+//		empSecondaryInfo.setJob_location("banglore");
+//		empSecondaryInfo.setNationality("india");
+//		empSecondaryInfo.setPersonal_email("test@gsdh.com");
+//
+//
+//
+//		empPrimaryInfo.setSecondary(empSecondaryInfo);
+
+		try {
+			factory = Persistence.createEntityManagerFactory("test");
+			manager  = factory.createEntityManager();
+			transaction = manager.getTransaction();
+			transaction.begin();
+
+			//1. EmpPrimaryInfo via persist by  
+			manager.persist(empSecondaryInfo);
+
+			//2.we can't do EmpSecondaryInfo via persist by EmpPrimaryInfo bcz one to one relation
+//			manager.persist(empPrimaryInfo);
+			
+			System.out.println("Record Inserted Successfully");
+			
+			//we declared reference of EmpSecondaryInfo with one to one in EmpPrimaryInfo bcz to retrieve the value from using EmpPrimaryInfo object
+			
+			EmpPrimaryInfo recoEmpPrimaryInfo = manager.find(EmpPrimaryInfo.class, 7);
+			System.out.println("emp id "+recoEmpPrimaryInfo.getEmp_id());
+			System.out.println("emp name "+recoEmpPrimaryInfo.getEmp_name());
+			
+			System.out.println("emp Govt id "+recoEmpPrimaryInfo.getSecondary().getGovt_id());
+			System.out.println("emp Personal email "+recoEmpPrimaryInfo.getSecondary().getPersonal_email());
+			
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+
+		}
+		finally {
+			factory.close();
+			manager.close();
+		}
+	} 
+
+}

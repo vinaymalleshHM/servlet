@@ -1,0 +1,14 @@
+package com.tyss.junit;
+
+public class BMICalculator {
+	
+	public String getBmiResult(double res) {
+		if (res<18.5) {
+			return "Under Weight";
+		} else {
+
+		}
+		return null;
+		
+	}
+}

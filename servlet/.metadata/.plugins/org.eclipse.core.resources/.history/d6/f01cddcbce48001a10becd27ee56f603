@@ -1,0 +1,42 @@
+package com.tyss.productspringboot.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
+import org.springframework.stereotype.Repository;
+
+import com.tyss.productspringboot.dto.ProductInfoBean;
+@Repository
+public class ProductDAOImpl implements ProductDAO{
+	@PersistenceUnit
+ private EntityManagerFactory factory;
+
+	@Override
+	public boolean addProduct(ProductInfoBean bean) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean removeProduct(int id) {
+		return false;
+	}
+
+	@Override
+	public boolean updateProduct(ProductInfoBean bean) {
+		return false;
+	}
+
+	@Override
+	public List<ProductInfoBean> getProductByName(String name) {
+		return null;
+	}
+
+	@Override
+	public List<ProductInfoBean> getAllProduct() {
+		return null;
+	}
+
+}

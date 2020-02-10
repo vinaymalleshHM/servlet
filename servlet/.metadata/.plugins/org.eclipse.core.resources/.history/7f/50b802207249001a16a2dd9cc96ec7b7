@@ -1,0 +1,15 @@
+package com.tyss.junit;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CalculatorTest {
+
+	void addTest() {
+		Calculator cal = new Calculator();
+		int i = cal.add(5, 6);
+		
+	}
+
+}

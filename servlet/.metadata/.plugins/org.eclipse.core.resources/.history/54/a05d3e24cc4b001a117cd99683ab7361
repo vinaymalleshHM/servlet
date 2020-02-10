@@ -1,0 +1,36 @@
+package com.tyss.medicalstoremanagement.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="product_info")
+public class ProductInfo {
+	@Column
+	@Id
+	@GeneratedValue
+	private int pid;
+	@Column
+	private String pName;
+	@Column
+	private String company;
+//	@Column
+//	private String category;
+	
+	@Column
+	private String medicineType;
+	@Column
+	private double price;
+	@Column
+	private int quantity;
+	@Column
+	private String description;
+	@Column
+	private String pImage;
+	
+	
+
+}

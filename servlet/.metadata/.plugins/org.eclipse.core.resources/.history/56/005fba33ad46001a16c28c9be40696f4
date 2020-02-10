@@ -1,0 +1,12 @@
+package com.tyss.hibernatepractice.onetoone;
+
+import java.io.Serializable;
+
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Entity;
+
+@Table
+public class EmpSecondaryInfo implements Serializable {
+
+}

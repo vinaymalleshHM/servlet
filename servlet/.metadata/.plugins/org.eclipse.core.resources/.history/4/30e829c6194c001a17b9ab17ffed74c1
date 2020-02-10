@@ -1,0 +1,37 @@
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+import com.tyss.hibernatepractice.manytomany.ProjectInfo;
+
+public class ManyToMantTableInsert {
+	
+	public static void main(String[] args) {
+		
+		EntityManagerFactory factory = null;
+		EntityManager manager = null;
+		EntityTransaction transaction = null;
+		EmpPrimaryInfo empPrimaryInfo = new EmpPrimaryInfo();
+		ProjectInfo projectInfo = new ProjectInfo();
+		
+		
+		empPrimaryInfo.setEmp_id(8);
+		empPrimaryInfo.setEmp_name("prince1");
+		empPrimaryInfo.setDepartment_id(18);
+		empPrimaryInfo.setDesignation("software");
+		empPrimaryInfo.setDob("1997-02-02");
+		empPrimaryInfo.setJoining_date("1998-02-06");
+		empPrimaryInfo.setExperience(2.5);
+		empPrimaryInfo.setManager_id(15);
+		empPrimaryInfo.setOfficial_mail("prince1testyantra@gmail.com");
+		empPrimaryInfo.setPhone_number(55555);
+		empPrimaryInfo.setSalary(2.3);
+
+		
+		
+		
+		
+	} 
+	
+}

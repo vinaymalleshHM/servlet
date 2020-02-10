@@ -1,0 +1,15 @@
+package com.tyss.productspringboot.config;
+
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+
+public class ORMConfig {
+	
+	public LocalEntityManagerFactoryBean getBean() {
+		return null;
+		
+		
+		
+		
+	}
+
+}

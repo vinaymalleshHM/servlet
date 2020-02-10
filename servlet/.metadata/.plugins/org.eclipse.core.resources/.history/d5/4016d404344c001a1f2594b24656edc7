@@ -1,0 +1,115 @@
+import java.util.ArrayList;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+import com.tyss.hibernatepractice.manytomany.ProjectInfo;
+
+public class ManyToManyTableInsert {
+
+	public static void main(String[] args) {
+
+		EntityManagerFactory factory = null;
+		EntityManager manager = null;
+		EntityTransaction transaction = null;
+		
+		//		EmpPrimaryInfo empPrimaryInfo = new EmpPrimaryInfo();
+		//		ProjectInfo projectInfo = new ProjectInfo();
+		//		ArrayList<EmpPrimaryInfo> al = new ArrayList<EmpPrimaryInfo>();
+		
+		EmpPrimaryInfo empPrimaryInfo1 = new EmpPrimaryInfo();
+		ProjectInfo projectInfo1 = new ProjectInfo();
+		ProjectInfo projectInfo2 = new ProjectInfo();
+		ArrayList<ProjectInfo> al1 = new ArrayList<ProjectInfo>();
+		ArrayList<EmpPrimaryInfo> al2 = new ArrayList<EmpPrimaryInfo>();
+
+
+		//		empPrimaryInfo.setEmp_id(14);
+		//		empPrimaryInfo.setEmp_name("prince2");
+		//		empPrimaryInfo.setDepartment_id(18);
+		//		empPrimaryInfo.setDesignation("software");
+		//		empPrimaryInfo.setDob("1997-02-02");
+		//		empPrimaryInfo.setJoining_date("1998-02-06");
+		//		empPrimaryInfo.setExperience(2.5);
+		//		empPrimaryInfo.setManager_id(19);
+		//		empPrimaryInfo.setOfficial_mail("prince2testyantra@gmail.com");
+		//		empPrimaryInfo.setPhone_number(55555);
+		//		empPrimaryInfo.setSalary(2.3);
+		//		empPrimaryInfo.setProjectInfo(al1);
+
+
+		//		al.add(empPrimaryInfo);
+
+		//		projectInfo.setPrimaryInfo(al);
+
+
+		//		projectInfo.setProject_id(3);
+		//		projectInfo.setProject_name("java proj");
+		//		projectInfo.setTechnology("java");
+		//		projectInfo.setLocation("banglore");
+		//		projectInfo.setStart_date("2018-10-3");
+		//		projectInfo.setEnd_date("2019-08-08");
+
+
+		empPrimaryInfo1.setEmp_id(19);
+		empPrimaryInfo1.setEmp_name("prince2");
+		empPrimaryInfo1.setDepartment_id(18);
+		empPrimaryInfo1.setDesignation("software");
+		empPrimaryInfo1.setDob("1997-02-02");
+		empPrimaryInfo1.setJoining_date("1998-02-06");
+		empPrimaryInfo1.setExperience(2.5);
+		empPrimaryInfo1.setManager_id(19);
+		empPrimaryInfo1.setOfficial_mail("prince2testyantra@gmail.com");
+		empPrimaryInfo1.setPhone_number(55555);
+		empPrimaryInfo1.setSalary(2.3);
+		empPrimaryInfo1.setProjectInfo(al1);
+		
+		al2.add(empPrimaryInfo1);
+
+		projectInfo1.setProject_id(15);
+		projectInfo1.setProject_name("java proj");
+		projectInfo1.setTechnology("java");
+		projectInfo1.setLocation("banglore");
+		projectInfo1.setStart_date("2018-10-3");
+		projectInfo1.setEnd_date("2019-08-08");
+		projectInfo1.setPrimaryInfo(al2);
+
+		projectInfo2.setProject_id(16);
+		projectInfo2.setProject_name("java proj");
+		projectInfo2.setTechnology("java");
+		projectInfo2.setLocation("banglore");
+		projectInfo2.setStart_date("2018-10-3");
+		projectInfo2.setEnd_date("2019-08-08");
+		projectInfo2.setPrimaryInfo(al2);
+		al1.add(projectInfo1);
+		al1.add(projectInfo2);
+
+
+
+		try {
+			factory = Persistence.createEntityManagerFactory("test");
+			manager = factory.createEntityManager();
+			transaction = manager.getTransaction(); 
+			transaction.begin();
+//						manager.persist(projectInfo);
+//			manager.persist(projectInfo1);
+//			manager.persist(projectInfo2);
+			manager.persist(projectInfo1);
+			System.out.println("Record Inserted");
+			transaction.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback(); 
+		}
+
+		finally {
+			factory.close();
+			manager.close();
+		}
+	} 
+
+}

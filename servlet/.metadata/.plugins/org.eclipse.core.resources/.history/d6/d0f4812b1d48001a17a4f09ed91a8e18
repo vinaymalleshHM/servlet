@@ -1,0 +1,11 @@
+package com.tyess.productrestapi.dao;
+
+import com.tyess.productrestapi.dto.ProductInfoBean;
+
+public interface ProductDAO {
+	void addProduct(ProductInfoBean bean);
+	void removeProduct(int id);
+	void updateProduct(int id);
+	void getProductByName(String name);
+
+}

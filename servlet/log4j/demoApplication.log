@@ -1,0 +1,5 @@
+[main] DEBUG prince  - I am debug Method
+[main] INFO  prince  - I am info Method
+[main] WARN  prince  - I am warn Method
+[main] DEBUG prince  - I am debug Method
+[main] FATAL prince  - I am fatal Method

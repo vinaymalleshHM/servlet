@@ -1,0 +1,11 @@
+package com.tyss.junit;
+
+public class MyFriendsTest {
+	
+	MyFriendsTest m = null;
+
+	public void afterAll() {
+		
+	}
+	 
+}

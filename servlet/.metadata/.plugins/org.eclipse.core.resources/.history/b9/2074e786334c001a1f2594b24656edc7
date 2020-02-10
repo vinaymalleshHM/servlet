@@ -1,0 +1,116 @@
+package com.tyss.hibernatepractice.manytomany;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+
+@Entity
+@Table(name="project_Info")
+public class ProjectInfo {
+	@Id
+	@Column
+	private int Project_id;
+	
+	@Column
+	private String Project_name;
+	
+	@Column
+	private String technology;
+	
+	@Column
+	private String location;
+	
+	@Column
+	private String start_date;
+	
+	@Column
+	private String end_date;
+	
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="EmpProjectInfo",joinColumns = @JoinColumn(name="Project_id"),inverseJoinColumns = @JoinColumn(name="emp_id"))
+	private List<EmpPrimaryInfo> primaryInfo;
+
+
+	public int getProject_id() {
+		return Project_id;
+	}
+
+
+	public void setProject_id(int project_id) {
+		Project_id = project_id;
+	}
+
+
+	public String getProject_name() {
+		return Project_name;
+	}
+
+
+	public void setProject_name(String project_name) {
+		Project_name = project_name;
+	}
+
+
+	public String getTechnology() {
+		return technology;
+	}
+
+
+	public void setTechnology(String technology) {
+		this.technology = technology;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
+	public String getStart_date() {
+		return start_date;
+	}
+
+
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+
+
+	public String getEnd_date() {
+		return end_date;
+	}
+
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
+	}
+
+
+	public List<EmpPrimaryInfo> getPrimaryInfo() {
+		return primaryInfo;
+	}
+
+
+	public void setPrimaryInfo(List<EmpPrimaryInfo> primaryInfo) {
+		this.primaryInfo = primaryInfo;
+	}
+	
+
+	
+}

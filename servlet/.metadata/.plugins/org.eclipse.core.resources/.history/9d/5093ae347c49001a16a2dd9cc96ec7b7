@@ -1,0 +1,13 @@
+package com.tyss.junit;
+
+import java.util.AbstractList;
+import java.util.ArrayList;
+
+public class MyFriends {
+	private AbstractList< String> al = new ArrayList<String>();
+	
+	public MyFriends() {
+		
+	}
+
+}

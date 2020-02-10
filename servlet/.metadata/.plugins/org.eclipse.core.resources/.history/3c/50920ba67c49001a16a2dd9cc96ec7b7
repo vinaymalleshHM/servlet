@@ -1,0 +1,13 @@
+package com.tyss.junit;
+
+import org.junit.jupiter.api.AfterAll;
+
+public class MyFriendsTest {
+	
+	MyFriendsTest m = null;
+@AfterAll
+	public static void afterAll() {
+		
+	}
+	 
+}

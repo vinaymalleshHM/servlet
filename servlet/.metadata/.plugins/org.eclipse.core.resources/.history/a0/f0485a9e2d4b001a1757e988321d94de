@@ -1,0 +1,7 @@
+package com.tyss.hibernatepractice.manytoone;
+
+public class EmpAddressPK {
+
+	private int emp_id ;
+	private String addr_type;
+}

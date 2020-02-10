@@ -1,0 +1,7 @@
+package com.tyss.hibernatepractice.onetoone;
+
+import java.io.Serializable;
+
+public class EmpSecondaryInfo implements Serializable {
+
+}

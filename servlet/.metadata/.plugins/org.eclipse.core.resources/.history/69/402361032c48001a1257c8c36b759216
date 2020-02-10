@@ -1,0 +1,17 @@
+package com.tyess.productrestapi.service;
+
+import java.util.List;
+
+import com.tyss.springrest.dto.EmployeeInfoBean;
+
+//service layer is used to write a BL apart from DB operation
+public interface ProductService {
+	
+	EmployeeInfoBean auth(String email, String password);
+	boolean register(EmployeeInfoBean bean);
+	boolean changePassword(int id,String password);
+	List<EmployeeInfoBean> search(String name);
+	boolean deleteEmployee(int id);
+
+
+}

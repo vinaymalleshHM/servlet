@@ -1,0 +1,47 @@
+package com.tyss.empspringmvc.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="employee_info")
+public class EmployeeInfoBean {
+	@Id
+	private int id;
+	private String name;
+	private String emial;
+	private String password;
+	private String role;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmial() {
+		return emial;
+	}
+	public void setEmial(String emial) {
+		this.emial = emial;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+}

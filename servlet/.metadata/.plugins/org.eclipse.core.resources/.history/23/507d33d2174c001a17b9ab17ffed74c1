@@ -1,0 +1,5 @@
+package com.tyss.hibernatepractice.manytomany;
+
+public class ProjectInfo {
+
+}

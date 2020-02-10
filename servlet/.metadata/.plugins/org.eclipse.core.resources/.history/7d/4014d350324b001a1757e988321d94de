@@ -1,0 +1,36 @@
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+import com.tyss.hibernatepractice.manytoone.EmpAddressInfo;
+import com.tyss.hibernatepractice.manytoone.EmpAddressPK;
+
+public class ManyToOneTableInsert {
+	public static void main(String[] args) {
+
+		EntityManagerFactory factory = null;
+		EntityManager manager = null;
+		EntityTransaction transaction = null;
+		EmpPrimaryInfo empPrimaryInfo = new EmpPrimaryInfo();
+		EmpAddressInfo emAddressInfo = new EmpAddressInfo();
+		EmpAddressPK empAddressPK = new EmpAddressPK();
+
+
+		empPrimaryInfo.setEmp_id(1);
+		empPrimaryInfo.setEmp_name("venki test yantra");
+		empPrimaryInfo.setDepartment_id(11);
+		empPrimaryInfo.setDesignation("software");
+		empPrimaryInfo.setDob("1997-02-02");
+		empPrimaryInfo.setJoining_date("1998-02-06");
+		empPrimaryInfo.setExperience(2.5);
+		empPrimaryInfo.setManager_id(20);
+		empPrimaryInfo.setOfficial_mail("venkitestyantra@gmail.com");
+		empPrimaryInfo.setPhone_number(55555);
+		empPrimaryInfo.setSalary(2.3);
+
+
+
+	}
+
+}

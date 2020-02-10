@@ -1,0 +1,6 @@
+package com.tyess.productrestapi.dao;
+
+public interface ProductDAO {
+	void addProduct();
+
+}

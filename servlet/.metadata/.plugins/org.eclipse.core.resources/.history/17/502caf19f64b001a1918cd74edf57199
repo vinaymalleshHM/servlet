@@ -1,0 +1,40 @@
+package com.tyss.productspringboot.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="product_info")
+public class ProductInfoBean {
+	@Id
+	@Column
+	@GeneratedValue
+	private int id;
+	@Column(unique = true)
+	private String pName;
+	@Column
+	private double price;
+	@Column
+	private int qty;
+	@Column
+	private String description;
+	@Column
+	private String proImg;
+	@Column
+	private String medicineType;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+	
+	
+
+}

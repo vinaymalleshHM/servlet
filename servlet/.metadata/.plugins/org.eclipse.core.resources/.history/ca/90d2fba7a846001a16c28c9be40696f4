@@ -1,0 +1,60 @@
+package com.tyss.hibernatepractice.jpql;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+
+
+public class DynamicRecordUpdate {
+	public static void main(String[] args) {
+		EntityManagerFactory factory = null;
+		EntityManager manager = null;
+		EntityTransaction transaction = null;
+		
+		
+		try {
+			factory = Persistence.createEntityManagerFactory("test");
+			manager = factory.createEntityManager();
+			transaction = manager.getTransaction();
+			transaction.begin();
+			
+			//1.first way to update
+//			String  jpql = "update EmpPrimaryInfo emp set emp.manager_id=:mid where emp.emp_id=:id";
+//			Query query = manager.createQuery(jpql);
+//			query.setParameter("mid", 16);
+//			query.setParameter("id", 6);
+//			int count = query.executeUpdate();
+			
+			//2.second wat to update
+			String  jpql = "update EmpPrimaryInfo emp set emp.emp_name=:mName where emp.emp_id=:id";
+			TypedQuery<EmpPrimaryInfo> typedQuery = manager.createQuery(jpql, EmpPrimaryInfo.class);
+			typedQuery.setParameter("mName","King");
+			typedQuery.setParameter("id", 2);
+			int count = typedQuery.executeUpdate();
+			transaction.commit();
+			if (count > 0) {
+				System.out.println("Record Updated Succussfuly");
+			}
+			else {
+				System.out.println("Record can't Update");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		
+		finally {
+			manager.close();
+			factory.close();
+		}
+	}
+
+}

@@ -1,0 +1,86 @@
+import java.util.ArrayList;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import com.tyss.hibernateapractice.dto.EmpPrimaryInfo;
+import com.tyss.hibernatepractice.manytoone.EmpAddressInfo;
+import com.tyss.hibernatepractice.manytoone.EmpAddressPK;
+
+public class ManyToOneTableInsert {
+	public static void main(String[] args) {
+
+		EntityManagerFactory factory = null;
+		EntityManager manager = null;
+		EntityTransaction transaction = null;
+		EmpPrimaryInfo empPrimaryInfo = new EmpPrimaryInfo();
+		EmpAddressInfo emAddressInfo = new EmpAddressInfo();
+		EmpAddressPK empAddressPK = new EmpAddressPK();
+		ArrayList al = new ArrayList();
+
+
+		empPrimaryInfo.setEmp_id(8);
+		empPrimaryInfo.setEmp_name("venki test yantra");
+		empPrimaryInfo.setDepartment_id(16);
+		empPrimaryInfo.setDesignation("software");
+		empPrimaryInfo.setDob("1997-02-02");
+		empPrimaryInfo.setJoining_date("1998-02-06");
+		empPrimaryInfo.setExperience(2.5);
+		empPrimaryInfo.setManager_id(15);
+		empPrimaryInfo.setOfficial_mail("venkitestyantra@gmail.com");
+		empPrimaryInfo.setPhone_number(55555);
+		empPrimaryInfo.setSalary(2.3);
+
+		//1. first time persist as -present
+		//		empAddressPK.setAddr_type("present");
+
+		//2.2nd time persist as -permanent
+		empAddressPK.setAddr_type("permanent");
+		empAddressPK.setEmp_id(6);
+
+		emAddressInfo.setAddress1("basavanagudi");
+		emAddressInfo.setAddress2("karnataka");
+		emAddressInfo.setAddressPK(empAddressPK);
+		emAddressInfo.setCity("banglore");
+		emAddressInfo.setHouseNo(16);
+		emAddressInfo.setLandMark("bbbb");
+		emAddressInfo.setPincode(222);
+		emAddressInfo.setEmpPrimaryInfo(empPrimaryInfo);
+
+		al.add(emAddressInfo);
+
+		empPrimaryInfo.setEmpAddressInfo(al);
+
+		try {
+			factory = Persistence.createEntityManagerFactory("test");
+			manager = factory.createEntityManager();
+			transaction = manager.getTransaction();
+			transaction.begin();
+
+			//1.all data persisted - Addr_type - present
+			//			manager.persist(emAddressInfo);
+
+			//2. updating only here Addr_type - permanent
+			//			EmpPrimaryInfo recoEmpPrimaryInfo = manager.find(EmpPrimaryInfo.class, 4);
+			//			emAddressInfo.setEmpPrimaryInfo(recoEmpPrimaryInfo);
+			//			manager.persist(emAddressInfo);
+
+			manager.persist(empPrimaryInfo);
+			System.out.println("Record Inserted Succussfuly");
+			transaction.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+
+
+		finally {
+			factory.close();
+			manager.close();
+		}
+	}
+
+}
