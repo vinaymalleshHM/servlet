@@ -1,0 +1,5 @@
+package com.tyss.inventorymanagement.service;
+
+public interface ProductService {
+
+}

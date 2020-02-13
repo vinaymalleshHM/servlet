@@ -1,0 +1,5 @@
+package com.tyss.inventorymanagement.dto;
+
+public class UserSecondaryInfoBean {
+
+}

@@ -1,0 +1,18 @@
+package com.tyss.inventorymanagement.dao;
+
+import java.util.List;
+
+import com.tyss.inventorymanagement.dto.ProductInfoBean;
+import com.tyss.inventorymanagement.dto.UserInfoBean;
+
+public interface InventoryManagementDAO {
+	boolean addCart(ProductInfoBean productInfoBean);
+	UserInfoBean auth(String email, String password);
+	boolean register(UserInfoBean userInfoBean);
+	List<ProductInfoBean> getProductByName(String name);
+	boolean addProduct(ProductInfoBean productInfoBean);
+	boolean updateProduct(ProductInfoBean productInfoBean);
+	boolean removeProduct(int id);
+	List<ProductInfoBean> getAllProduct();
+
+}

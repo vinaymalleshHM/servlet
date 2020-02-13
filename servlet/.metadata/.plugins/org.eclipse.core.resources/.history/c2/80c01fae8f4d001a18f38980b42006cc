@@ -1,0 +1,17 @@
+package com.tyss.inventorymanagement.service;
+
+import java.util.List;
+
+import com.tyss.inventorymanagement.dto.ProductInfoBean;
+import com.tyss.inventorymanagement.dto.UserInfoBean;
+
+public interface ProductService {
+	UserInfoBean auth(String email, String password);
+	boolean register(UserInfoBean userInfoBean);
+	List<ProductInfoBean> getProductByName(String name);
+	boolean addProduct(ProductInfoBean productInfoBean);
+	boolean updateProduct(ProductInfoBean productInfoBean);
+	boolean removeProduct(int id);
+	List<ProductInfoBean> getAllProduct();
+
+}

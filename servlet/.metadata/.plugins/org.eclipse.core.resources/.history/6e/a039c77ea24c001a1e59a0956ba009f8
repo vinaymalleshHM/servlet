@@ -1,0 +1,14 @@
+package com.tyss.inventorymanagement.dao;
+
+import java.util.List;
+
+import com.tyss.inventorymanagement.dto.ProductInfoBean;
+
+public interface InventoryManagement {
+	List<ProductInfoBean> getProductByName(String name);
+	void addProduct(ProductInfoBean productInfo);
+	boolean updateProduct(ProductInfoBean productInfo);
+	boolean removeProduct(int id);
+	List<ProductInfoBean> getAllProduct();
+
+}

@@ -1,0 +1,39 @@
+package com.tyss.inventorymanagement.dto;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="product_info")
+public class ProductInfoBean {
+	@Id
+	@GeneratedValue
+	private int pId;
+	@Column
+	private String pName;
+	@Column
+	private String catagoery;
+	@Column
+	private String company; 
+	@Column
+	private int quantity;
+	@Column
+	private double price;
+	@Column
+	private String url;
+	
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List<CartInfoBean> cartInfoBeans;
+	
+
+}

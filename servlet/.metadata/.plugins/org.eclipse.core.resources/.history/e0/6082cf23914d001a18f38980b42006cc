@@ -1,0 +1,88 @@
+package com.tyss.inventorymanagement.dto;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="product_info")
+public class ProductInfoBean {
+	@Id
+	@GeneratedValue
+	private int pId;
+	@Column
+	private String name;
+	@Column
+	private String catagoery;
+	@Column
+	private String company;
+	@Column
+	private int quantity;
+	@Column
+	private double price;
+	@Column
+	private String url;
+//	@ManyToMany(cascade = CascadeType.ALL,mappedBy = "productInfoBeans")
+//	private List<OrderInfoBean> orderInfoBean;
+//	
+	
+	
+//	public List<OrderInfoBean> getOrderInfoBean() {
+//		return orderInfoBean;
+//	}
+//	public void setOrderInfoBean(List<OrderInfoBean> orderInfoBean) {
+//		this.orderInfoBean = orderInfoBean;
+//	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public int getpId() {
+		return pId;
+	}
+	public void setpId(int pId) {
+		this.pId = pId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCatagoery() {
+		return catagoery;
+	}
+	public void setCatagoery(String catagoery) {
+		this.catagoery = catagoery;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	
+
+}

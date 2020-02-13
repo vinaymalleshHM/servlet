@@ -1,0 +1,31 @@
+package com.tyss.inventorymanagement;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.tyss.inventorymanagement.dto.UserInfoBean;
+import com.tyss.inventorymanagement.service.ProductService;
+import com.tyss.inventorymanagement.service.ProductServiceImpl;
+
+class AddUserTest {
+
+	@Test
+	void addUserNullTest() {
+		UserInfoBean userInfoBean = null;
+		ProductService service = new ProductServiceImpl();
+		boolean actual =service.register(userInfoBean);
+		boolean expected = false;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void addUserNotNullTest() {
+		UserInfoBean userInfoBean = null;
+		ProductService service = new ProductServiceImpl();
+		boolean actual =service.register(userInfoBean);
+		boolean expected = false;
+		assertEquals(expected, actual);
+	}
+
+}

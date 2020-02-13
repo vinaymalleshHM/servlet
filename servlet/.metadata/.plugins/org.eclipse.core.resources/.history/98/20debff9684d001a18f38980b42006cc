@@ -1,0 +1,62 @@
+package com.tyss.inventorymanagement.dto;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.websocket.OnOpen;
+
+@Entity
+@Table(name="user_secondary_Infobean")
+public class UserSecondaryInfoBean {
+
+	@Id
+	private int sId;
+//	@Column
+//	private int uId;
+	
+	@Column
+	private String blood;
+	@Column
+	private String join;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="uId")
+	private UserInfoBean userInfoBean;
+	
+	
+	
+	public UserInfoBean getUserInfoBean() {
+		return userInfoBean;
+	}
+	public void setUserInfoBean(UserInfoBean userInfoBean) {
+		this.userInfoBean = userInfoBean;
+	}
+	public int getsId() {
+		return sId;
+	}
+	public void setsId(int sId) {
+		this.sId = sId;
+	}
+	public int getuId() {
+		return uId;
+	}
+	public void setuId(int uId) {
+		this.uId = uId;
+	}
+	public String getBlood() {
+		return blood;
+	}
+	public void setBlood(String blood) {
+		this.blood = blood;
+	}
+	public String getJoin() {
+		return join;
+	}
+	public void setJoin(String join) {
+		this.join = join;
+	}
+	
+}

@@ -1,0 +1,9 @@
+package com.tyss.inventorymanagement.dao;
+
+public interface InventoryManagement {
+	void searchProduct();
+	void addProduct();
+	void updateProduct();
+
+
+}

@@ -1,0 +1,55 @@
+package com.tyss.inventorymanagement.dto;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="order_info")
+public class OrderInfoBean {
+	@Id
+	@GeneratedValue
+	private int oId;
+	@Column(name="totalprice")
+	private Double totalPrice;
+	@Column(name="totalpricewithgST")
+	private double totalPriceGST;
+	
+	
+//	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//	private List<ProductInfoBean> productInfoBeans;
+	
+	
+	public int getoId() {
+		return oId;
+	}
+	public void setoId(int oId) {
+		this.oId = oId;
+	}
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public double getTotalPriceGST() {
+		return totalPriceGST;
+	}
+	public void setTotalPriceGST(double totalPriceGST) {
+		this.totalPriceGST = totalPriceGST;
+	}
+
+	
+}

@@ -1,0 +1,44 @@
+package com.tyss.inventorymanagement;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import com.tyss.inventorymanagement.dto.UserInfoBean;
+import com.tyss.inventorymanagement.service.ProductService;
+import com.tyss.inventorymanagement.service.ProductServiceImpl;
+
+class AddUserTest {
+	UserInfoBean userInfoBean ;
+	
+	@BeforeEach 
+	void createCalObject() {
+		userInfoBean = new UserInfoBean();
+	}
+	
+	@Disabled
+	@Test
+	void addUserNullTest() {
+		 userInfoBean = null;
+		ProductService service = new ProductServiceImpl();
+		boolean actual =service.register(userInfoBean);
+		boolean expected = false;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void addUserNotNullTest() {
+		userInfoBean.setEmail("YYYYY8@gmail.com");
+		userInfoBean.setMobile(55555);
+		userInfoBean.setName("names");
+		userInfoBean.setPassword("Aa@123456");
+		ProductService service = new ProductServiceImpl();
+		System.out.println(userInfoBean.getEmail());
+		boolean actual =service.register(userInfoBean);
+		boolean expected = true;
+		assertEquals(expected, actual);
+	}
+	
+}

@@ -1,0 +1,12 @@
+package com.tyss.inventorymanagement.dto;
+
+import javax.persistence.Column;
+
+public class ProperResponse {
+	private int uId;
+	private String name;
+	private String email;
+	private String password;
+	private long mobile;
+
+}

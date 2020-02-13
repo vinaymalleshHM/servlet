@@ -1,0 +1,117 @@
+package com.tyss.inventorymanagement.dto;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="product_info")
+public class ProductInfoBean {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private int pId;
+	@Column
+	private String pName;
+	@Column
+	private String catagoery;
+	@Column
+	private String company; 
+	@Column
+	private int quantity;
+	@Column
+	private double price;
+	@Column
+	private String url;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private List<CartInfoBean> cartInfoBeans;
+	
+//    @ManyToOne(cascade = CascadeType.ALL )
+//    private OrderInfoBean orderInfoBeans;
+
+	public int getpId() {
+		return pId;
+	}
+
+	public void setpId(int pId) {
+		this.pId = pId;
+	}
+
+	public String getpName() {
+		return pName;
+	}
+
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
+	public String getCatagoery() {
+		return catagoery;
+	}
+
+	public void setCatagoery(String catagoery) {
+		this.catagoery = catagoery;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+//	public List<CartInfoBean> getCartInfoBeans() {
+//		return cartInfoBeans;
+//	}
+//
+//	public void setCartInfoBeans(List<CartInfoBean> cartInfoBeans) {
+//		this.cartInfoBeans = cartInfoBeans;
+//	}
+
+//	public OrderInfoBean getOrderInfoBeans() {
+//		return orderInfoBeans;
+//	}
+//
+//	public void setOrderInfoBeans(OrderInfoBean orderInfoBeans) {
+//		this.orderInfoBeans = orderInfoBeans;
+//	}
+    
+    
+    
+    
+}

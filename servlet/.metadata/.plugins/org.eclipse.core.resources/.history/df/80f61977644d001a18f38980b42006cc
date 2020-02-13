@@ -1,0 +1,12 @@
+package com.tyss.inventorymanagement.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user_secondary_Infobean")
+public class UserSecondaryInfoBean {
+
+	private int sId;
+	private String blood;
+}

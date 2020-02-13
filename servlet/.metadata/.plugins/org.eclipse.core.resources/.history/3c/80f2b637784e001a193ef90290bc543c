@@ -1,0 +1,7 @@
+package com.tyss.inventorymanagement.dto;
+
+public class ProductCartPK {
+	private int pId ;
+	private int cId;
+
+}

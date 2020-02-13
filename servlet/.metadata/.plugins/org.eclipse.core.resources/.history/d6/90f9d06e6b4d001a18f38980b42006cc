@@ -1,0 +1,45 @@
+package com.tyss.inventorymanagement.dto;
+
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.websocket.OnOpen;
+
+@Entity
+@Table(name="user_secondary_Infobean")
+public class UserSecondaryInfoBean {
+
+	@Id
+	private int secondaryId;
+	@Column
+	private String blood;
+	@Column
+	private String join;
+
+	
+	public int getSecondaryId() {
+		return secondaryId;
+	}
+	public void setSecondaryId(int secondaryId) {
+		this.secondaryId = secondaryId;
+	}
+	public String getBlood() {
+		return blood;
+	}
+	public void setBlood(String blood) {
+		this.blood = blood;
+	}
+	public String getJoin() {
+		return join;
+	}
+	public void setJoin(String join) {
+		this.join = join;
+	}
+	
+}

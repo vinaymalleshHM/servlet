@@ -1,0 +1,211 @@
+package com.tyss.inventorymanagement.dao;
+
+import java.util.Iterator;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Repository;
+
+import com.tyss.inventorymanagement.dto.CartInfoBean;
+import com.tyss.inventorymanagement.dto.OrderInfoBean;
+import com.tyss.inventorymanagement.dto.ProductInfoBean;
+import com.tyss.inventorymanagement.dto.UserInfoBean;
+
+@Repository
+public class InventoryManagementDAOImpl implements  InventoryManagementDAO{
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+
+	@Autowired
+	private BCryptPasswordEncoder encoder ;
+
+
+	@Override
+	public UserInfoBean auth(String email, String password) {
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "select e from UserInfoBean e where e.email=:email";
+		TypedQuery<UserInfoBean> query = manager.createQuery(jpql, UserInfoBean.class);
+		query.setParameter("email", email);
+		try {
+			UserInfoBean bean = query.getSingleResult();
+			if (encoder.matches(password, bean.getPassword())) {
+				return bean;
+			} else {
+				return null;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			for (StackTraceElement element : e.getStackTrace()) {
+				System.out.println(element.toString());
+			}
+			return null;
+		}
+	}
+
+	@Override
+	public boolean register(UserInfoBean userInfoBean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		try {
+			userInfoBean.setPassword(encoder.encode(userInfoBean.getPassword()));
+			manager.persist(userInfoBean);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			for (StackTraceElement element : e.getStackTrace()) {
+				System.out.println(element.toString());
+			}
+			return false;
+
+		}
+
+	}
+
+	@Override
+	public boolean addProduct(ProductInfoBean productInfoBean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		manager.persist(productInfoBean);
+		transaction.commit();
+		return true;
+
+
+	}
+
+
+
+	@Override
+	public boolean updateProduct(ProductInfoBean productInfoBean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		ProductInfoBean infobean = manager.find(ProductInfoBean.class, productInfoBean.getpId());
+		infobean.setpName(productInfoBean.getpName());
+		infobean.setCompany(productInfoBean.getCompany());
+		infobean.setCatagoery(productInfoBean.getCatagoery());
+		infobean.setPrice(productInfoBean.getPrice());
+		infobean.setQuantity(productInfoBean.getQuantity());
+		infobean.setUrl(productInfoBean.getUrl());
+		try {
+			manager.persist(infobean);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			for (StackTraceElement element : e.getStackTrace()) {
+				System.out.println(element.toString());
+			}
+			return false;
+		}
+	}
+
+
+	@Override
+	public boolean removeProduct(int id) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		ProductInfoBean bean = manager.find(ProductInfoBean.class, id);
+		manager.remove(bean);
+		transaction.commit();
+		return true;
+	}
+
+
+	@Override
+	public List<ProductInfoBean> getProductByName(String name) {
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "select e from ProductInfoBean e where e.name=:name OR e.company=:name OR e.catagoery=:name";
+		TypedQuery<ProductInfoBean > query = manager.createQuery(jpql,ProductInfoBean.class);
+		query.setParameter("name", name);
+		return query.getResultList();
+
+	}
+
+
+
+	@Override
+	public List<ProductInfoBean> getAllProduct() {
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "select e from ProductInfoBean e";
+		TypedQuery<ProductInfoBean > query = manager.createQuery(jpql,ProductInfoBean.class);
+		return query.getResultList();
+	}
+	
+	
+	
+	@Override
+	public boolean addCart(CartInfoBean cartInfoBean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		manager.persist(cartInfoBean);
+		transaction.commit();
+		return true;
+	}
+
+
+
+	@Override
+	public boolean removeCart(int id) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		CartInfoBean bean = manager.find(CartInfoBean.class, id);
+		manager.remove(bean);
+		transaction.commit();
+		return true;
+	}
+	
+	
+	@Override
+	public List<CartInfoBean> getCart(int id) {
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "select e from CartInfoBean e where e.uId=:id";
+		TypedQuery<CartInfoBean > query = manager.createQuery(jpql,CartInfoBean.class);
+		query.setParameter("id", id);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<CartInfoBean> getAllCart(CartInfoBean cartInfoBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	@Override
+	public boolean orders(UserInfoBean userInfoBean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		manager.persist(userInfoBean);
+		transaction.commit();
+		return true;
+	}
+	
+	public List<OrderInfoBean> getAllOrder(int id) {
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "select e from OrderInfoBean e where e.uId=:id";
+		TypedQuery<OrderInfoBean > query = manager.createQuery(jpql,OrderInfoBean.class);
+		query.setParameter("id", id);
+		return query.getResultList();
+	}
+
+	
+
+	
+
+
+}
